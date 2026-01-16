@@ -1,0 +1,7 @@
+{
+  "name": "OpenLlama WebUI",
+  "description": "A production-ready, model-agnostic chat interface designed for local LLM inference, featuring session management, custom themes, and message history.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

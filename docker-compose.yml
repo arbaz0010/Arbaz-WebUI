@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  webui:
+    build: .
+    container_name: openllama-webui
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      # CONFIGURATION
+      # Point this to your llama.cpp server.
+      # 1. If running llama.cpp on the HOST machine (outside Docker), use: http://host.docker.internal:8080/v1
+      # 2. If running llama.cpp in another container, use that container's name: http://llama-server:8080/v1
+      # 3. If running on a remote server, use the IP: http://192.168.1.50:8080/v1
+      
+      # IMPORTANT: Ensure you include the /v1 suffix if your backend expects it, 
+      # or matches the proxy_pass behavior in nginx.conf
+      - LLAMA_API_URL=http://host.docker.internal:8080/v1
+    
+    # helper for host.docker.internal to work on Linux
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
